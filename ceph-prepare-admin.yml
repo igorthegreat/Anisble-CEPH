@@ -1,0 +1,43 @@
+- hosts: ceph-admin 
+  vars:
+    password: $6$5RQd8yrU$f0i.pQqmg/f8komlnMqhxLnadTXjCfP5bmFj.a9uAiS7nZPBYVd34TeWiUMTLX2Fxxpnw30fEl3/MGzaYcd8p1 
+
+  tasks:
+
+    - name: Add User ceph-admin 
+      user: name=ceph-admin password={{password}}
+
+    - name: Add ceph-admin to sudoers
+      copy:
+       src: /etc/ansible/files/ceph-admin
+       dest: /etc/sudoers.d/ceph-admin
+       mode: 0440
+
+    - name: Enable the Extra Packages for Enterprise Linux (EPEL) repository 
+      yum:
+       name: epel-release
+       state: latest
+
+    - name: Copy files hosts
+      copy:
+       src: /etc/ansible/files/hosts
+       dest: /etc/hosts
+
+    - name: Copy file ceph-deploy.repo
+      copy:
+       src: /etc/ansible/files/ceph-deploy.repo
+       dest: /etc/yum.repos.d/ceph-deploy.repo
+
+    - name: Copy file selinux config
+      copy:
+       src: /etc/ansible/files/config
+       dest: /etc/selinux/config
+
+    - selinux:
+        state: disabled
+
+#    - name: Set authorized key took from file
+#      authorized_key:
+#        user: ceph-admin
+#        state: present
+#        key: "{{ lookup('file', '/home/ceph-admin/.ssh/authorized_keys') }}"

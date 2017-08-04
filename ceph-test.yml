@@ -1,0 +1,18 @@
+- hosts: ceph-test 
+  vars:
+    password: $6$5RQd8yrU$f0i.pQqmg/f8komlnMqhxLnadTXjCfP5bmFj.a9uAiS7nZPBYVd34TeWiUMTLX2Fxxpnw30fEl3/MGzaYcd8p1 
+
+  tasks:
+
+    - name: Add CEPH Admin User 
+      user: name=ceph-admin password={{password}}
+
+    - name: Enable the Extra Packages for Enterprise Linux (EPEL) repository 
+      yum:
+       name: epel-release
+       state: latest
+
+    - name: Copy files hosts
+      copy:
+       src: /etc/ansible/files/hosts
+       dest: /etc/hosts

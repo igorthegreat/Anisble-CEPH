@@ -1,0 +1,9 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.140.60  cnode-admin
+192.168.140.69  cnode-mon
+192.168.29.61   cnode-osd1
+192.168.29.62   cnode-osd2
+192.168.29.63   cnode-osd3
+192.168.29.64   cnode-client
+
