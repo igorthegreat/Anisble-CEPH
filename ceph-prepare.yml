@@ -28,14 +28,19 @@
        dest: /etc/sudoers.d/ceph-admin
        mode: 0440
 
-#    - name: Set ceph-admin public SSH authorized key
-#      authorized_key:
-#        user: ceph-admin
-#        state: present
-#        key: "{{ lookup('file', '/home/ceph-admin/.ssh/authorized_keys') }}"
+    - name: Set ceph-admin public SSH authorized key
+      authorized_key:
+       user: ceph-admin
+       state: present
+       key: "{{ lookup('file', '/home/ceph-admin/.ssh/authorized_keys') }}"
 
     - name: Copy file selinux config
       copy:
        src: /etc/ansible/files/config
        dest: /etc/selinux/config
-
+       
+    - name: Stop and disable firewalld.
+      service:
+       name: firewalld
+       state: stopped
+       enabled: False
