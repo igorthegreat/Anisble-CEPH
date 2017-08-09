@@ -1,4 +1,4 @@
-- hosts: ceph-osd 
+- hosts: ceph-mon 
   vars:
     password: $6$5RQd8yrU$f0i.pQqmg/f8komlnMqhxLnadTXjCfP5bmFj.a9uAiS7nZPBYVd34TeWiUMTLX2Fxxpnw30fEl3/MGzaYcd8p1 
 
@@ -38,8 +38,12 @@
       copy:
        src: /etc/ansible/files/config
        dest: /etc/selinux/config
-       
-    - name: Stop and disable firewalld.
+
+    - name: Stop SELinux
+      selinux:
+       state: disabled       
+
+    - name: Stop and disable firewalld
       service:
        name: firewalld
        state: stopped
