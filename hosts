@@ -45,9 +45,13 @@
 [ceph-osd]
 cnode-osd1
 cnode-osd2
-#cnode-osd3
-#cnode-mon
-#cnode-client
+cnode-osd3
+
+[ceph-mon]
+cnode-mon
+
+[ceph-client]
+cnode-client
 
 [ceph-admin]
 cnode-admin
