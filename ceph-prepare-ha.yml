@@ -1,4 +1,4 @@
-- hosts: ceph-mon 
+- hosts: ceph-ha 
   vars:
     password: $6$5RQd8yrU$f0i.pQqmg/f8komlnMqhxLnadTXjCfP5bmFj.a9uAiS7nZPBYVd34TeWiUMTLX2Fxxpnw30fEl3/MGzaYcd8p1 
 

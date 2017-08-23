@@ -14,7 +14,7 @@
 
     - name: Copy files hosts
       copy:
-       src: /etc/ansible/files/hosts
+       src: ./files/hosts
        dest: /etc/hosts
 
     - name: Copy file ceph-deploy.repo

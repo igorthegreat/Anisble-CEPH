@@ -56,4 +56,6 @@ cnode-client
 [ceph-admin]
 cnode-admin
 
-[ceph-test]
+[ceph-ha]
+cnode-ha1
+cnode-ha2
