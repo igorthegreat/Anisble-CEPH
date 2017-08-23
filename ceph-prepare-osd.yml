@@ -38,17 +38,12 @@
       copy:
        src: ./files/config
        dest: /etc/selinux/config
-<<<<<<< HEAD:ceph-prepare.yml
-       
-    - name: Stop and disable firewalld.
-=======
 
     - name: Stop SELinux
       selinux:
        state: disabled       
 
     - name: Stop and disable firewalld
->>>>>>> git-test3:ceph-prepare-osd.yml
       service:
        name: firewalld
        state: stopped
