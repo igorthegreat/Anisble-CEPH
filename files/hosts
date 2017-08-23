@@ -7,3 +7,5 @@
 192.168.29.63   cnode-osd3
 192.168.29.64   cnode-client
 
+192.168.140.61	cnode-ha1
+192.168.140.62	cnode-ha2
