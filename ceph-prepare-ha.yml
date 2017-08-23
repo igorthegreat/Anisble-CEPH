@@ -1,4 +1,4 @@
-- hosts: ceph-osd 
+- hosts: ceph-ha 
   vars:
     password: $6$5RQd8yrU$f0i.pQqmg/f8komlnMqhxLnadTXjCfP5bmFj.a9uAiS7nZPBYVd34TeWiUMTLX2Fxxpnw30fEl3/MGzaYcd8p1 
 
@@ -14,17 +14,17 @@
 
     - name: Copy files hosts
       copy:
-       src: /etc/ansible/files/hosts
+       src: ./files/hosts
        dest: /etc/hosts
 
     - name: Copy file ceph-deploy.repo
       copy:
-       src: /etc/ansible/files/ceph-deploy.repo
+       src: ./files/ceph-deploy.repo
        dest: /etc/yum.repos.d/ceph-deploy.repo
 
     - name: Add ceph-admin to sudoers
       copy:
-       src: /etc/ansible/files/ceph-admin
+       src: ./files/ceph-admin
        dest: /etc/sudoers.d/ceph-admin
        mode: 0440
 
@@ -36,10 +36,14 @@
 
     - name: Copy file selinux config
       copy:
-       src: /etc/ansible/files/config
+       src: ./files/config
        dest: /etc/selinux/config
-       
-    - name: Stop and disable firewalld.
+
+    - name: Stop SELinux
+      selinux:
+       state: disabled       
+
+    - name: Stop and disable firewalld
       service:
        name: firewalld
        state: stopped

@@ -46,8 +46,20 @@
 cnode-osd1
 cnode-osd2
 cnode-osd3
+<<<<<<< HEAD
 cnode-mon
+=======
+
+[ceph-mon]
+cnode-mon
+
+[ceph-client]
+>>>>>>> git-test3
 cnode-client
 
 [ceph-admin]
 cnode-admin
+
+[ceph-ha]
+cnode-ha1
+cnode-ha2
